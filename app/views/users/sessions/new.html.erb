@@ -1,0 +1,27 @@
+<h2 class="center">Log in</h2>
+<div class="row">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name),  :html => {:class => "col s12"}) do |f| %>
+  <div class="row">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">account_circle</i>
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, class: "validate" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">lock</i>
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "btn waves-effect green center" do  %>
+    Log in  <i class="material-icons right">send</i>
+    <% end %>
+  </div>
+  <% end %>
+  <%= render "users/shared/links" %>
+</div>

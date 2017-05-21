@@ -1,0 +1,21 @@
+<%= form_for [:admin, @user, @appointment] do |f| %>
+  <% if @appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this @appointment from being saved:</h2>
+
+      <ul>
+      <% @appointment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form">
+    <%= f.label :date %><br/>
+    <%= f.date_field :date, required: true  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "btn-large green white-text center" %>
+  </div>
+<% end %>

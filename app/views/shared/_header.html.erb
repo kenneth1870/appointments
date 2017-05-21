@@ -1,0 +1,16 @@
+<nav class="nav-wrapper  grey darken-4" role="navigation">
+  <div class="nav-wrapper container">
+    <%=  link_to  "HOME",  root_path, class: "brand-logo", id: "logo-containe" %>
+    <ul class="right hide-on-med-and-down" id="nav-mobile">
+      <% if user_signed_in? %>
+        <% if current_user.admin? %>
+          <li><%= link_to "ADMIN ", admin_root_path %></li>
+        <% end %>
+        <li> <%= link_to "SEE APPOINTMENTS", "#list-appointments", id: "btn-list-appointments" if current_user.user? %></li>
+        <li><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to('LOGIN', new_user_session_path)%> </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

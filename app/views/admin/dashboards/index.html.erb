@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <p class="center"><%= notice%></p>
+      <div class="col s12 m12">
+        <div class="icon-block">
+          <h2 class="center black-text">Dashboard</h2>
+          <br>
+          <p class="center light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis ornare ultrices. Nunc ipsum dolor, ultricies et erat id, ele mentum efficitur quam. Ut commodo porta velit, sed consectetur risus fermentum quis. Maecenas et porttitor urna. Donec odio arcu, interdum ut vestibulum in, suscipit et ipsum. Aenean efficitur nunc facilisis posuere tincidunt</p>
+          <br>
+          <h6 class="center black-text"><%= link_to "Create User", new_admin_user_path , class: "btn-large red white-text"%></h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if @users.present? %>
+    <div class="row">
+      <div class="col s12 m12">
+        <div class="icon-block">
+          <h4 class="center red-text">Users</h4>
+        </div>
+      </div>
+    </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Appointments</th>
+        <th># of appointments</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <% @users.each do |user|   %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.role %></td>
+          <td><%= link_to "See", admin_user_appointments_path(user), class: "green-text" %></td>
+          <td><%= user.appointments_count %></td>
+          <td><%= link_to "Edit", edit_admin_user_path(user), class: "yellow-text"  %></td>
+          <td><%= link_to "Delete", admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "red-text"  %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+  <% else %>
+    <h5 class="center black-text">No users yet.</h5>
+  <% end %>
+</div>
+
+
+<div class="container">
+  <% if @appointments.present? %>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="icon-block">
+        <h4 class="center green-text">Appointments</h4>
+      </div>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>appointment created  at </th>
+        <th>appointment date </th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <% @appointments.each do |appointment|   %>
+        <tr>
+          <td><%= appointment.user.email %></td>
+          <td><%= appointment.created_at.strftime("%Y-%m-%d") %></td>
+          <td><%= appointment.created_at.strftime("%Y-%m-%d") %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+  <% else %>
+    <h5 class="center black-text">No Appointments yet</h5>
+  <% end %>
+</div>
+
+
+
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <div class="col s12 m12">
+        <div class="icon-block">
+          <h4 class="center blue-grey-text">Total users: <%= @users_sessions %></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

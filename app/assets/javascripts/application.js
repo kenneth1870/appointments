@@ -14,3 +14,17 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(document).on('turbolinks:load', function() {
+
+})
+
+$(document).on('click', '#btn-list-appointments', function(event) {
+  var target = $(this.getAttribute('href'));
+  if( target.length ) {
+    event.preventDefault();
+    $('html, body').animate({
+      scrollTop: target.offset().top
+    }, 1000);
+
+  }
+});
