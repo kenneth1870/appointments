@@ -1,5 +1,4 @@
 class Admin::DashboardsController < Admin::BaseController
-  before_action :authenticate_user!
 
   def index
     @users = User.where(role: 0)
